@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+import { useSelector } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import TodoDetail from './components/TodoDetail';
+import TodoList from './components/TodoList';
+import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
+  const todoList = useSelector(state => state);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App m-5">
+      <h3 className='my-3'>TodoList Redux</h3>
+      <Routes>
+        <Route path="/" element={<TodoList />} />
+        {todoList.map((todo) => { return <Route path={todo.id} element={<TodoDetail todo={todo} />} key={todo.id} /> })}
+      </Routes>
     </div>
   );
 }
