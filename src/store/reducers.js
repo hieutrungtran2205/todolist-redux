@@ -1,6 +1,6 @@
 import { ADD_TODO, DELETE_TODO, UPDATE_TODO } from './actions';
 
-export const reducer = (state = JSON.parse(localStorage.getItem("todoRedux")) ?? [], action) => {
+const reducer = (state = JSON.parse(localStorage.getItem("todoRedux")) ?? [], action) => {
     let newTodoList;
     switch (action.type) {
         case ADD_TODO:
@@ -9,8 +9,7 @@ export const reducer = (state = JSON.parse(localStorage.getItem("todoRedux")) ??
             localStorage.setItem("todoRedux", JSON.stringify(newTodoList))
             return newTodoList;
         case DELETE_TODO:
-            newTodoList = [...state];
-            newTodoList = newTodoList.filter(todo => todo.id !== action.payload);
+            newTodoList = [...state].filter(todo => todo.id !== action.payload);
             localStorage.setItem("todoRedux", JSON.stringify(newTodoList))
             return newTodoList;
         case UPDATE_TODO:
@@ -32,3 +31,5 @@ export const reducer = (state = JSON.parse(localStorage.getItem("todoRedux")) ??
             return state;
     }
 }
+
+export default reducer;

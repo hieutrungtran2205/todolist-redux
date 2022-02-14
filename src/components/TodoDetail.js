@@ -1,13 +1,15 @@
+import moment from 'moment';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteTodo, updateTodo } from '../store/actions';
 
 function TodoDetail({ todo }) {
+    console.log("render TodoDetail");
+
     const [editable, setEditable] = useState(false);
     const [name, setName] = useState(todo.name);
     const dispatch = useDispatch();
-    const date = new Date();
-    const timeUpdate = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}-${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+
     return (
         <div>
             <div className="d-flex align-items-center my-3">
@@ -33,7 +35,7 @@ function TodoDetail({ todo }) {
                         dispatch(updateTodo({
                             ...todo,
                             name: name,
-                            time: timeUpdate
+                            time: moment().format('hh:mm:ss - DD/MM/YYYY')
                         }))
                         if (editable) {
                             setName(todo.name);

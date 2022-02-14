@@ -1,11 +1,11 @@
+import moment from 'moment';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteTodo, updateTodo } from '../store/actions';
-import moment from 'moment';
-
 
 function TodoItem({ todo }) {
+    console.log("render TodoItem");
     const [name, setName] = useState(todo.name);
     const [editable, setEditable] = useState(false);
     const dispatch = useDispatch();
@@ -58,4 +58,4 @@ function TodoItem({ todo }) {
 
 }
 
-export default TodoItem
+export default TodoItem;

@@ -4,6 +4,8 @@ import { addTodo } from '../store/actions';
 import moment from 'moment';
 
 function TodoInput() {
+    console.log("render TodoInput");
+
     const [input, setInput] = useState();
     const dispatch = useDispatch();
     return (
