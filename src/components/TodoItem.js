@@ -23,7 +23,7 @@ function TodoItem({ todo }) {
                             }}
                         />
                         :
-                        <Link to={todo.id} className='d-flex justify-content-between align-items-center'>
+                        <Link to={todo.id} className='d-flex justify-content-between align-items-center text-decoration-none text-dark'>
                             <h5 className='mx-4'>{todo.name}</h5>
                             <span>{todo.time}</span>
                         </Link>
