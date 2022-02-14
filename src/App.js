@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
   const todoList = useSelector(state => state);
-
   return (
     <div className="App m-5">
       <h3 className='my-3'>TodoList Redux</h3>

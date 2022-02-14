@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTodo } from '../redux/action';
+import { addTodo } from '../store/action';
+import moment from 'moment';
 
 function TodoInput() {
-    let [input, setInput] = useState();
-    let dispatch = useDispatch();
-    const date = new Date();
-    const currentTime = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}-${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    const [input, setInput] = useState();
+    const dispatch = useDispatch();
     return (
         <div>
             <div className="d-flex my-2">
@@ -19,7 +18,7 @@ function TodoInput() {
                         dispatch(addTodo({
                             id: new Date().getTime().toString(),
                             name: input,
-                            time: currentTime
+                            time: moment().format('hh:mm:ss - DD/MM/YYYY')
                         }));
                         setInput('');
                     }}

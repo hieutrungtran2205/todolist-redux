@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteTodo, updateTodo } from '../redux/action';
+import { deleteTodo, updateTodo } from '../store/action';
+import moment from 'moment';
+
 
 function TodoItem({ todo }) {
-
     const [name, setName] = useState(todo.name);
     const [editable, setEditable] = useState(false);
     const dispatch = useDispatch();
-    const date = new Date();
-    const timeUpdate = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}-${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 
     return (
         <div>
@@ -37,7 +36,7 @@ function TodoItem({ todo }) {
                         dispatch(updateTodo({
                             ...todo,
                             name: name,
-                            time: timeUpdate
+                            time: moment().format('hh:mm:ss - DD/MM/YYYY')
                         }))
                         if (editable) {
                             setName(todo.name);
