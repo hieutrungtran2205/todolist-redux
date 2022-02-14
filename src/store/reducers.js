@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_TODO, UPDATE_TODO } from './action';
+import { ADD_TODO, DELETE_TODO, UPDATE_TODO } from './actions';
 
 export const reducer = (state = JSON.parse(localStorage.getItem("todoRedux")) ?? [], action) => {
     let newTodoList;
